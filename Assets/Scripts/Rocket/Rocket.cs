@@ -16,15 +16,18 @@ public class Rocket : MonoBehaviour
     private float _elapsedTime = 0;
     private bool _isFreezedPosition = false;
     private bool _isEmptyFuel = false;
+    private Animator _animator;
 
     public bool IsDead { get; private set; }
 
     private void Start()
     {
-        IsDead = false;
         _healthBar.value = _health;
         _currentCheckPoint = transform.position;
         _rigidbody2D = GetComponent<Rigidbody2D>();
+        _animator = GetComponent<Animator>();
+
+        IsDead = false;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -52,6 +55,7 @@ public class Rocket : MonoBehaviour
     private void Respawn()
     {
         IsDead = false;
+        _animator.SetBool("IsDead", IsDead);
         _isFreezedPosition = false;
 
         transform.rotation = Quaternion.identity;
@@ -72,19 +76,21 @@ public class Rocket : MonoBehaviour
     public void Die(bool isEmptyFuel)
     {
         IsDead = true;
+        _animator.SetBool("IsDead", IsDead);
         _isEmptyFuel = isEmptyFuel;
     }
 
     public void AddHealth(float quantity)
     {
-        _healthBar.DOValue(_healthBar.value + quantity, _healthBarAnimationSpeed);
+        if (quantity > 0)
+            _healthBar.DOValue(_healthBar.value + quantity, _healthBarAnimationSpeed);
     }
 
     public void TakeDamage(float damage)
     {
         if (!IsDead)
         {
-            if (_healthBar.value - damage > 0)
+            if (_healthBar.value - damage > 0 && damage > 0)
                 _healthBar.DOValue(_healthBar.value - damage, _healthBarAnimationSpeed);
             else
             {
@@ -92,5 +98,10 @@ public class Rocket : MonoBehaviour
                 Die(false);
             }
         }
+    }
+
+    public void ShowMessage(string message)
+    {
+        Debug.Log(message);
     }
 }

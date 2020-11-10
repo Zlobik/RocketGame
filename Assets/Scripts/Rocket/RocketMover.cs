@@ -21,8 +21,6 @@ public class RocketMover : MonoBehaviour
     [SerializeField] private float _downConsuption;
     [SerializeField] private float _idleConsuption;
 
-    [SerializeField] private CameraFollow _camera;
-
     private Rigidbody2D _rigidbody2D;
     private Rocket _rocket;
     private Animator _animator;
@@ -71,8 +69,6 @@ public class RocketMover : MonoBehaviour
                 _animator.SetBool("IsPressedUpButton", false);
             else
                 BurnFuel(_idleConsuption);
-
-            _camera.ChangeCameraPosition(transform.position);
         }
     }
 

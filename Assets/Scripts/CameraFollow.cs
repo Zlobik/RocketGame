@@ -8,23 +8,17 @@ public class CameraFollow : MonoBehaviour
     [SerializeField] private Transform _target;
     [SerializeField] private Vector3 _offSet;
 
+    private Rocket _rocket;
 
-    private void Start()
+    private void Awake()
     {
-        _offSet = transform.position - _target.position;
-    }
-
-    public void ChangeCameraPosition(Vector3 position)
-    {
-        transform.position = position + _offSet;
+        transform.position = _target.position + _offSet;
+        _rocket = _target.GetComponent<Rocket>();
     }
 
     private void Update()
     {
-        //if (transform.position != _target.position + _offSet)
-        //    transform.DOMove(_target.position + _offSet, Time.fixedDeltaTime);
-
-        //transform.position = _target.position + _offSet;
-
+        if (!_rocket.IsDead)
+            transform.position = Vector3.MoveTowards(transform.position, _target.position + _offSet, 100000 * Time.deltaTime);
     }
 }
