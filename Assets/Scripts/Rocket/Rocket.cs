@@ -18,6 +18,7 @@ public class Rocket : MonoBehaviour
     private bool _isEmptyFuel = false;
     private Animator _animator;
 
+    public int StarsCollected;
     public bool IsDead { get; private set; }
 
     private void Start()
@@ -34,6 +35,8 @@ public class Rocket : MonoBehaviour
     {
         if (collision.GetComponent<CheckPoint>())
             _currentCheckPoint = collision.transform.position;
+        if (collision.GetComponent<Star>())
+            StarsCollected++;
     }
 
     private void Update()

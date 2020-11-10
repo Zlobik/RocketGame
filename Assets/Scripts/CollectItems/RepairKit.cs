@@ -9,7 +9,6 @@ public class RepairKit : MonoBehaviour
     private Sprite _sprite;
     private bool _isSetRocket = false;
 
-
     private void Start()
     {
         _sprite = GetComponent<SpriteRenderer>().sprite;

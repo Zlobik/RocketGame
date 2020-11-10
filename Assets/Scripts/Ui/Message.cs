@@ -16,6 +16,7 @@ public class Message : MonoBehaviour
     private float _elapsedTime;
     private RectTransform _rectTransform;
     private Image _image;
+    private bool _isBusy = false;
 
     private void Start()
     {
@@ -28,6 +29,7 @@ public class Message : MonoBehaviour
     {
         _message.DOFade(0, _fadeTime);
         _image.DOFade(0, _fadeTime);
+        _isBusy = false;
     }
 
     private void Update()
@@ -47,14 +49,17 @@ public class Message : MonoBehaviour
 
     public void ShowMessage(string text, Sprite sprite)
     {
-        _message.text = text;
-        _image.sprite = sprite;
-        _image.SetNativeSize();
-        _rectTransform.localScale = new Vector3(_imageScale, _imageScale, 0);
+        if (!_isBusy)
+        {
+            _message.text = text;
+            _image.sprite = sprite;
+            _rectTransform.localScale = new Vector3(_imageScale, _imageScale, _imageScale);
 
-        _message.DOFade(1, _showingTime);
-        _image.DOFade(1, _showingTime);
+            _message.DOFade(1, _showingTime);
+            _image.DOFade(1, _showingTime);
 
-        _timer = true;
+            _timer = true;
+            _isBusy = true;
+        }
     }
 }
