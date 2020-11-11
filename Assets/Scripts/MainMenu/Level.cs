@@ -6,6 +6,7 @@ public class Level : MonoBehaviour
 {
     [SerializeField] private Transform[] _stars;
     [SerializeField] private string _sceneName;
+    [SerializeField] private string _previousSceneName;
     [SerializeField] private bool _isFirstLevel;
 
     private CanvasGroup _canvasGroup;
@@ -17,7 +18,7 @@ public class Level : MonoBehaviour
         if (_sceneName == "Level01" && !PlayerPrefs.HasKey("Level01"))
             PlayerPrefs.SetInt("Level01", 0);
 
-        if (PlayerPrefs.HasKey(_sceneName))
+        if (PlayerPrefs.HasKey(_sceneName) || PlayerPrefs.HasKey(_previousSceneName))
             MakeEnable();
         else
             MakeDisable();

@@ -11,11 +11,12 @@ GameObject:
   - component: {fileID: 4957076665475967516}
   - component: {fileID: 4957076665475967517}
   - component: {fileID: 4957076665475967511}
+  - component: {fileID: 1362818459328388081}
   - component: {fileID: 4957076665475967514}
   - component: {fileID: 4957076665475967515}
   - component: {fileID: 4957076665475967512}
   - component: {fileID: 7884038165647000918}
-  - component: {fileID: 1362818459328388081}
+  - component: {fileID: 5732502717101851913}
   m_Layer: 0
   m_Name: Rocket
   m_TagString: Player
@@ -106,6 +107,22 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!70 &1362818459328388081
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4957076665475967518}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.684}
+  m_Size: {x: 0.7, y: 3}
+  m_Direction: 0
 --- !u!50 &4957076665475967514
 Rigidbody2D:
   serializedVersion: 4
@@ -123,9 +140,9 @@ Rigidbody2D:
   m_AngularDrag: 0
   m_GravityScale: 0.2
   m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_Interpolate: 2
+  m_SleepingMode: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!114 &4957076665475967515
 MonoBehaviour:
@@ -141,7 +158,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _upForce: 50000
   _downForce: 25000
-  _rotateSpeed: 150
+  _rotateSpeed: 175
   _upButton: {fileID: 0}
   _downButton: {fileID: 0}
   _leftButton: {fileID: 0}
@@ -167,6 +184,7 @@ MonoBehaviour:
   _healthBar: {fileID: 0}
   _timeBeforeRespawn: 2.5
   _healthBarAnimationSpeed: 0.3
+  StarsCollected: 0
 --- !u!114 &7884038165647000918
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -181,19 +199,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _message: {fileID: 0}
   _fadeSpeed: 0
---- !u!70 &1362818459328388081
-CapsuleCollider2D:
+--- !u!114 &5732502717101851913
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4957076665475967518}
   m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.684}
-  m_Size: {x: 0.7, y: 3}
-  m_Direction: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1566572b1bb91b44aa82cc2edb01f2ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _collisionEffect: {fileID: 198157547220164012, guid: 4961a16ba01e09547be3e1c9d16d5ad0,
+    type: 3}
+  _effectTransform: {fileID: 0}

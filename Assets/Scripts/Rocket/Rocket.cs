@@ -14,12 +14,13 @@ public class Rocket : MonoBehaviour
     private Rigidbody2D _rigidbody2D;
     private Vector3 _currentCheckPoint;
     private float _elapsedTime = 0;
-    private bool _isFreezedPosition = false;
     private bool _isEmptyFuel = false;
     private Animator _animator;
 
-    public int StarsCollected;
+
     public bool IsDead { get; private set; }
+    public bool _isFreezedPosition { get; private set; }
+    public int StarsCollected { get; private set; }
 
     private void Start()
     {

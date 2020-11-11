@@ -5,7 +5,10 @@ using UnityEngine;
 public class FuelCan : MonoBehaviour
 {
     [SerializeField] private float _capacity = 0.8f;
+    [SerializeField] private ParticleSystem _collectEffect;
 
+    private ParticleSystem _effect;
+    private bool _isCollected;
     private Sprite _sprite;
 
     private void Start()
@@ -17,10 +20,26 @@ public class FuelCan : MonoBehaviour
     {
         if(collision.TryGetComponent<RocketMover>(out RocketMover rocketMover) && collision.TryGetComponent<RocketMessage>(out RocketMessage rocketMessage))
         {
+            _isCollected = true;
+
+            GetComponent<SpriteRenderer>().sprite = null;
+            _effect = Instantiate(_collectEffect, transform);
             rocketMover.AddFuel(_capacity);
-            rocketMessage.ShowMessage("fuel collected", _sprite);
-            gameObject.SetActive(false);
+
             gameObject.GetComponentInParent<CollectItemsRespawner>().SetRocket(collision.GetComponent<Rocket>());
+            rocketMessage.ShowMessage("fuel collected", _sprite);
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        if (_isCollected)
+        {
+            if (!_effect.IsAlive())
+            {
+                _effect.gameObject.SetActive(false);
+                gameObject.SetActive(false);
+            }
         }
     }
 }

@@ -7,6 +7,8 @@ public class Textures : MonoBehaviour
     [SerializeField] private float _damage = 0.015f;
     [SerializeField] private float _collisionForceWithoutDamage = 5;
 
+    public float CollisionForceWithoutDamage => _collisionForceWithoutDamage;
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.TryGetComponent<Rocket>(out Rocket rocket))

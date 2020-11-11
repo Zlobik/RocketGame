@@ -19,6 +19,6 @@ public class CameraFollow : MonoBehaviour
     private void Update()
     {
         if (!_rocket.IsDead)
-            transform.position = Vector3.MoveTowards(transform.position, _target.position + _offSet, 100000 * Time.deltaTime);
+            transform.position = Vector3.Lerp(transform.position, _target.position + _offSet, 1500 * Time.deltaTime);
     }
 }
