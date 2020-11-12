@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 2523015751547969017}
   - component: {fileID: 2523015751547969018}
   m_Layer: 0
-  m_Name: Monitor_0
+  m_Name: Arrow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

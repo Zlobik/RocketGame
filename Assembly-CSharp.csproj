@@ -85,8 +85,12 @@
     <Compile Include="Assets\Scripts\LoadScene.cs" />
     <Compile Include="Assets\Scripts\MainMenu\Background.cs" />
     <Compile Include="Assets\Scripts\MainMenu\BackgroundChanger.cs" />
+    <Compile Include="Assets\Scripts\MainMenu\ChooseRocket.cs" />
     <Compile Include="Assets\Scripts\MainMenu\Level.cs" />
+    <Compile Include="Assets\Scripts\MainMenu\SaveChoosedRocket.cs" />
+    <Compile Include="Assets\Scripts\MainMenu\SetAnimatorBool.cs" />
     <Compile Include="Assets\Scripts\NextLevelPlatform.cs" />
+    <Compile Include="Assets\Scripts\OnLevelStarts.cs" />
     <Compile Include="Assets\Scripts\PressurePlate.cs" />
     <Compile Include="Assets\Scripts\Rocket\Rocket.cs" />
     <Compile Include="Assets\Scripts\Rocket\RocketAnimation.cs" />
@@ -96,6 +100,7 @@
     <Compile Include="Assets\Scripts\Textures.cs" />
     <Compile Include="Assets\Scripts\Traps\DeathPress.cs" />
     <Compile Include="Assets\Scripts\Traps\Enemy.cs" />
+    <Compile Include="Assets\Scripts\Traps\Mill.cs" />
     <Compile Include="Assets\Scripts\Traps\Thorns.cs" />
     <Compile Include="Assets\Scripts\Ui\ControlButton.cs" />
     <Compile Include="Assets\Scripts\Ui\Message.cs" />

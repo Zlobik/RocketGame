@@ -116,7 +116,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 7.5
-  _damage: 1
+  _damage: 0.5
   _path: {fileID: 0}
 --- !u!70 &4591043569822891014
 CapsuleCollider2D:

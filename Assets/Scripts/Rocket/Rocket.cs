@@ -108,4 +108,16 @@ public class Rocket : MonoBehaviour
     {
         Debug.Log(message);
     }
+
+    public void SetNewAnimator(Animator animator)
+    {
+        _animator = animator;
+    }
+
+    public void SetNewCapsuleCollider(CapsuleCollider2D capsuleCollider2D)
+    {
+        CapsuleCollider2D currentCollider = gameObject.GetComponent<CapsuleCollider2D>();
+        currentCollider.size = capsuleCollider2D.size;
+        currentCollider.offset = capsuleCollider2D.offset;
+    }
 }

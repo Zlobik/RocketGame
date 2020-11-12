@@ -7,18 +7,15 @@ using UnityEngine.UI;
 public class RocketMover : MonoBehaviour
 {
     [SerializeField] private float _upForce;
-    [SerializeField] private float _downForce;
     [SerializeField] private float _rotateSpeed;
 
     [SerializeField] private ControlButton _upButton;
-    [SerializeField] private ControlButton _downButton;
     [SerializeField] private ControlButton _leftButton;
     [SerializeField] private ControlButton _rightButton;
 
     [SerializeField] private Slider _fuelBar;
     [SerializeField] private float _fuelBarAnimationSpeed;
     [SerializeField] private float _upConsuption;
-    [SerializeField] private float _downConsuption;
     [SerializeField] private float _idleConsuption;
 
     private Rigidbody2D _rigidbody2D;
@@ -45,12 +42,6 @@ public class RocketMover : MonoBehaviour
         BurnFuel(_upConsuption);
     }
 
-    private void MoveDown()
-    {
-        _rigidbody2D.AddForce(-transform.up * _downForce * Time.deltaTime, ForceMode2D.Force);
-        BurnFuel(_downConsuption);
-    }
-
     private void Rotate(float rotateSpeed)
     {
         transform.Rotate(0, 0, (transform.rotation.z + rotateSpeed) * Time.deltaTime);
@@ -63,8 +54,6 @@ public class RocketMover : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.W) || _upButton.IsPressed)
                 MoveUp();
-            if (Input.GetKey(KeyCode.S) || _downButton.IsPressed)
-                MoveDown();
             if (Input.GetKey(KeyCode.A) || _leftButton.IsPressed)
                 Rotate(_rotateSpeed);
             if (Input.GetKey(KeyCode.D) || _rightButton.IsPressed)

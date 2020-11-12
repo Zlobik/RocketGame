@@ -6,7 +6,7 @@ using UnityEngine;
 public class DeathPress : MonoBehaviour
 {
     [SerializeField] private float _offsetDepthY;
-    [SerializeField] private float _goBackSpeed;
+    [SerializeField] private float _goBackTime;
     [SerializeField] private float _compressSpeed;
     [SerializeField] private float _damage;
 
@@ -27,7 +27,7 @@ public class DeathPress : MonoBehaviour
 
     private void MoveBackY()
     {
-        transform.DOMoveY(_currentPosition.y, _goBackSpeed);
+        transform.DOMoveY(_currentPosition.y, _goBackTime);
     }
 
     private void Update()
@@ -46,7 +46,7 @@ public class DeathPress : MonoBehaviour
         {
             _time += Time.deltaTime;
 
-            if (_time >= _goBackSpeed)
+            if (_time >= _goBackTime)
             {
                 _isCompress = true;
                 _time = 0;
