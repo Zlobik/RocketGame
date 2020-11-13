@@ -13,6 +13,7 @@ public class NextLevelPlatform : MonoBehaviour
     private int _playerCollectStars;
     private int _starsOnLevel;
     private int _value;
+    private bool _isDoTimeScale;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -21,7 +22,7 @@ public class NextLevelPlatform : MonoBehaviour
             _playerCollectStars = rocket.StarsCollected;
             _starsOnLevel = _levelStars.StarsOnLevel;
 
-            Time.timeScale = 0;
+            _isDoTimeScale = true;
 
             CollectStars();
             SaveScene(_value);
@@ -51,6 +52,14 @@ public class NextLevelPlatform : MonoBehaviour
 
     private void SaveScene(int value)
     {
+        if (_isDoTimeScale)
+        {
+            if (Time.timeScale != 0)
+                Time.timeScale = 0.3f;
+            else if (Time.timeScale == 0.3f)
+                _isDoTimeScale = false;
+        }
+
         if (PlayerPrefs.GetInt(_sceneName) < value)
             PlayerPrefs.SetInt(_sceneName, value);
 

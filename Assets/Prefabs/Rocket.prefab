@@ -10,13 +10,14 @@ GameObject:
   m_Component:
   - component: {fileID: 4957076665475967516}
   - component: {fileID: 4957076665475967517}
-  - component: {fileID: 4957076665475967511}
-  - component: {fileID: 1362818459328388081}
   - component: {fileID: 4957076665475967514}
+  - component: {fileID: 1362818459328388081}
+  - component: {fileID: 4957076665475967511}
   - component: {fileID: 4957076665475967515}
   - component: {fileID: 4957076665475967512}
   - component: {fileID: 7884038165647000918}
   - component: {fileID: 5732502717101851913}
+  - component: {fileID: 2141373261696125148}
   m_Layer: 0
   m_Name: Rocket
   m_TagString: Player
@@ -88,41 +89,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!95 &4957076665475967511
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4957076665475967518}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 63a52785ae7851743bba3fbd63beea2a, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
---- !u!70 &1362818459328388081
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4957076665475967518}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.684}
-  m_Size: {x: 0.7, y: 3}
-  m_Direction: 0
 --- !u!50 &4957076665475967514
 Rigidbody2D:
   serializedVersion: 4
@@ -144,6 +110,41 @@ Rigidbody2D:
   m_SleepingMode: 0
   m_CollisionDetection: 1
   m_Constraints: 4
+--- !u!70 &1362818459328388081
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4957076665475967518}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.684}
+  m_Size: {x: 0.7, y: 3}
+  m_Direction: 0
+--- !u!95 &4957076665475967511
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4957076665475967518}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 63a52785ae7851743bba3fbd63beea2a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &4957076665475967515
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -157,17 +158,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _upForce: 50000
-  _downForce: 25000
   _rotateSpeed: 175
   _upButton: {fileID: 0}
-  _downButton: {fileID: 0}
   _leftButton: {fileID: 0}
   _rightButton: {fileID: 0}
   _fuelBar: {fileID: 0}
   _fuelBarAnimationSpeed: 0.3
-  _upConsuption: 0.025
-  _downConsuption: 0.016
-  _idleConsuption: 0.01
+  _upConsuption: 0.017
+  _idleConsuption: 0.007
 --- !u!114 &4957076665475967512
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -184,7 +182,6 @@ MonoBehaviour:
   _healthBar: {fileID: 0}
   _timeBeforeRespawn: 2.5
   _healthBarAnimationSpeed: 0.3
-  StarsCollected: 0
 --- !u!114 &7884038165647000918
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -198,7 +195,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _message: {fileID: 0}
-  _fadeSpeed: 0
+  _fadeSpeed: 0.5
 --- !u!114 &5732502717101851913
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -214,3 +211,15 @@ MonoBehaviour:
   _collisionEffect: {fileID: 198157547220164012, guid: 4961a16ba01e09547be3e1c9d16d5ad0,
     type: 3}
   _effectTransform: {fileID: 0}
+--- !u!114 &2141373261696125148
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4957076665475967518}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 400f3bbcce1218549ad3e111111addf9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

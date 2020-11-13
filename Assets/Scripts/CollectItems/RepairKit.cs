@@ -30,7 +30,7 @@ public class RepairKit : MonoBehaviour
             if (!_isSetRocket)
             {
                 _isSetRocket = true;
-                gameObject.GetComponentInParent<CollectItemsRespawner>().SetRocket(rocket);
+                GetComponentInParent<CollectItemsRespawner>().SetRocket(rocket);
             }
 
             rocketMessage.ShowMessage("repair kit collected", _sprite);

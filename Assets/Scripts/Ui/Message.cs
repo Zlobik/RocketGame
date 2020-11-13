@@ -9,26 +9,28 @@ public class Message : MonoBehaviour
 {
     [SerializeField] private float _showingTime;
     [SerializeField] private float _fadeTime;
-    [SerializeField] private float _imageScale;
+    [SerializeField] private float _iconScale;
+    [SerializeField] private Image _icon;
 
     private TMP_Text _message;
     private bool _timer;
     private float _elapsedTime;
     private RectTransform _rectTransform;
-    private Image _image;
     private bool _isBusy = false;
+    private Vector3 _iconPosition;
 
     private void Start()
     {
         _message = GetComponent<TMP_Text>();
-        _image = GetComponentInChildren<Image>();
-        _rectTransform = _image.GetComponent<RectTransform>();
+        _rectTransform = _icon.GetComponent<RectTransform>();
+
+        _iconPosition = _icon.rectTransform.localPosition;
     }
 
     private void DissolveMessage()
     {
         _message.DOFade(0, _fadeTime);
-        _image.DOFade(0, _fadeTime);
+        _icon.DOFade(0, _fadeTime);
         _isBusy = false;
     }
 
@@ -52,11 +54,12 @@ public class Message : MonoBehaviour
         if (!_isBusy)
         {
             _message.text = text;
-            _image.sprite = sprite;
-            _rectTransform.localScale = new Vector3(_imageScale, _imageScale, _imageScale);
+            _icon.sprite = sprite;
+            _icon.rectTransform.localScale = new Vector3(_iconScale, _iconScale, _iconScale);
+            _icon.rectTransform.localPosition = _iconPosition;
 
-            _message.DOFade(1, _showingTime);
-            _image.DOFade(1, _showingTime);
+            _message.DOFade(1, _fadeTime);
+            _icon.DOFade(1, _fadeTime);
 
             _timer = true;
             _isBusy = true;

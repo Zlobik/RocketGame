@@ -6,7 +6,7 @@ using UnityEngine;
 public class CameraFollow : MonoBehaviour
 {
     [SerializeField] private Transform _target;
-    [SerializeField] private Vector3 _offSet;
+    [SerializeField] private Vector3 _offSet = new Vector3(0, 0, -10);
 
     private Rocket _rocket;
 
