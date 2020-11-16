@@ -21,16 +21,12 @@ public class RocketMover : MonoBehaviour
     private Rigidbody2D _rigidbody2D;
     private Rocket _rocket;
     private Animator _animator;
-    private Tweener _tween;
-    private SpriteRenderer _renderer;
 
     private void Start()
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
         _rocket = GetComponent<Rocket>();
         _animator = GetComponent<Animator>();
-        _tween = _rigidbody2D.DORotate(_rigidbody2D.rotation, 0.1f);
-        _renderer = GetComponent<SpriteRenderer>();
     }
 
     private void MoveUp()

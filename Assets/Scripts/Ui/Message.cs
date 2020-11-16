@@ -53,13 +53,18 @@ public class Message : MonoBehaviour
     {
         if (!_isBusy)
         {
+
             _message.text = text;
             _icon.sprite = sprite;
             _icon.rectTransform.localScale = new Vector3(_iconScale, _iconScale, _iconScale);
             _icon.rectTransform.localPosition = _iconPosition;
 
+            if (sprite != null)
+                _icon.DOFade(1, _fadeTime);
+            else
+                _icon.DOFade(0, _fadeTime);
+
             _message.DOFade(1, _fadeTime);
-            _icon.DOFade(1, _fadeTime);
 
             _timer = true;
             _isBusy = true;

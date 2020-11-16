@@ -16,6 +16,7 @@ public class RocketAds : MonoBehaviour
     private void Start()
     {
         _rocket = GetComponent<Rocket>();
+        Advertisement.Initialize(_gameId, _testMode);
     }
 
     IEnumerator ShowAdVideo()
@@ -27,7 +28,6 @@ public class RocketAds : MonoBehaviour
         while (!Advertisement.IsReady("MainBeforeLevelStart"))
             yield return waitForSeconds;
 
-        Advertisement.Banner.SetPosition(BannerPosition.CENTER);
         Advertisement.Show("MainBeforeLevelStart");
     }
 

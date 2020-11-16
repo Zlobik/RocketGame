@@ -10,22 +10,27 @@ public class RocketAnimation : MonoBehaviour
     private ParticleSystem _effect;
     private float _elapsedTime;
     private bool _timer;
-
+    private Rocket _rocket;
+    private Textures _textures;
 
     private void Start()
     {
         _effect = Instantiate(_collisionEffect, _effectTransform);
         _effect.gameObject.SetActive(false);
+        _rocket = GetComponent<Rocket>();
+        _textures = new Textures();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Textures textures = new Textures();
 
-        if (collision.relativeVelocity.magnitude > textures.CollisionForceWithoutDamage && !_timer)
+        if (collision.gameObject.GetComponent<Textures>() || collision.gameObject.GetComponent<Thorns>() || collision.gameObject.GetComponent<DeathPress>())
         {
-            _effect.gameObject.SetActive(true);
-            _timer = true;
+            if (collision.relativeVelocity.magnitude > _textures.CollisionForceWithoutDamage && !_timer && !_rocket.IsDead)
+            {
+                _effect.gameObject.SetActive(true);
+                _timer = true;
+            }
         }
     }
 
@@ -35,7 +40,7 @@ public class RocketAnimation : MonoBehaviour
         {
             _elapsedTime += Time.deltaTime;
 
-            if(_elapsedTime >= 0.5f)
+            if (_elapsedTime >= 0.5f)
             {
                 _timer = false;
                 _elapsedTime = 0;

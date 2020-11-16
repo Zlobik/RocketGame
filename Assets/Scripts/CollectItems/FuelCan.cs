@@ -6,27 +6,44 @@ public class FuelCan : MonoBehaviour
 {
     [SerializeField] private float _capacity = 0.8f;
     [SerializeField] private ParticleSystem _collectEffect;
+    [SerializeField] private bool _needRespawn = true;
 
     private ParticleSystem _effect;
     private bool _isCollected;
     private Sprite _sprite;
+    private SpriteRenderer _renderer;
 
     private void Start()
     {
-        _sprite = GetComponent<SpriteRenderer>().sprite;
+        _renderer = GetComponent<SpriteRenderer>();
+        _sprite = _renderer.sprite;
+        _effect = Instantiate(_collectEffect, transform);
+        _effect.gameObject.SetActive(false);
+    }
+
+    private void OnDisable()
+    {
+        if (_needRespawn)
+        {
+            _isCollected = false;
+            if (_renderer.sprite == null)
+                _renderer.sprite = _sprite;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.TryGetComponent<RocketMover>(out RocketMover rocketMover) && collision.TryGetComponent<RocketMessage>(out RocketMessage rocketMessage))
+        if (collision.TryGetComponent<RocketMover>(out RocketMover rocketMover) && collision.TryGetComponent<RocketMessage>(out RocketMessage rocketMessage))
         {
             _isCollected = true;
+            _effect.gameObject.SetActive(true);
 
-            GetComponent<SpriteRenderer>().sprite = null;
-            _effect = Instantiate(_collectEffect, transform);
+            _renderer.sprite = null;
             rocketMover.AddFuel(_capacity);
 
-            gameObject.GetComponentInParent<CollectItemsRespawner>().SetRocket(collision.GetComponent<Rocket>());
+            if (_needRespawn)
+                gameObject.GetComponentInParent<CollectItemsRespawner>().SetRocket(collision.GetComponent<Rocket>());
+
             rocketMessage.ShowMessage("fuel collected", _sprite);
         }
     }

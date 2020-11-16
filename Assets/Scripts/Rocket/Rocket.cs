@@ -19,7 +19,6 @@ public class Rocket : MonoBehaviour
 
 
     public bool IsDead { get; private set; }
-    public bool _isFreezedPosition { get; private set; }
     public int StarsCollected { get; private set; }
 
     private void Start()
@@ -46,8 +45,6 @@ public class Rocket : MonoBehaviour
         {
             _elapsedTime += Time.deltaTime;
 
-            if (_elapsedTime >= _timeBeforeRespawn / 2 && !_isFreezedPosition && !_isEmptyFuel)
-                FreezePosition();
             if (_elapsedTime >= _timeBeforeRespawn)
             {
                 Respawn();
@@ -58,29 +55,26 @@ public class Rocket : MonoBehaviour
 
     private void Respawn()
     {
-        IsDead = false;
-        _animator.SetBool("IsDead", IsDead);
-        _isFreezedPosition = false;
-
-        transform.rotation = Quaternion.identity;
+        _rigidbody2D.constraints = RigidbodyConstraints2D.FreezeAll;
         _rigidbody2D.constraints = RigidbodyConstraints2D.None;
         _rigidbody2D.constraints = RigidbodyConstraints2D.FreezeRotation;
+
+        IsDead = false;
+        _animator.SetBool("IsDead", IsDead);
+
+        transform.rotation = Quaternion.identity;
         transform.position = _currentCheckPoint;
 
         AddHealth(1);
         GetComponent<RocketMover>().AddFuel(1);
     }
 
-    private void FreezePosition()
-    {
-        _isFreezedPosition = true;
-        _rigidbody2D.constraints = RigidbodyConstraints2D.FreezeAll;
-    }
-
     public void Die(bool isEmptyFuel)
     {
         IsDead = true;
-        _animator.SetBool("IsDead", IsDead);
+        if (!isEmptyFuel)
+            _animator.SetBool("IsDead", IsDead);
+        _animator.SetBool("IsPressedUpButton", false);
         _isEmptyFuel = isEmptyFuel;
     }
 

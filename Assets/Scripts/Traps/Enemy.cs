@@ -8,6 +8,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float _speed;
     [SerializeField] private float _damage;
     [SerializeField] private Transform _path;
+    [SerializeField] private bool _needFlipx = true;
 
     private Transform[] _points;
     private SpriteRenderer _renderer;
@@ -36,7 +37,9 @@ public class Enemy : MonoBehaviour
         if (transform.position == _points[_currentPoint].position)
         {
             _currentPoint++;
-            _renderer.flipX = !_renderer.flipX;
+
+            if (_needFlipx)
+                _renderer.flipX = !_renderer.flipX;
 
             if (_currentPoint == _points.Length)
                 _currentPoint = 0;

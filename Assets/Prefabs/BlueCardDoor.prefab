@@ -539,7 +539,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _openningOffset: 8
-  _openenningSpeed: 3
+  _openenningTime: 3.5
+  _blueCardSprite: {fileID: 21300000, guid: c7566f3dc4aaa98499d846691cdac219, type: 3}
 --- !u!61 &5041391650335305411
 BoxCollider2D:
   m_ObjectHideFlags: 0

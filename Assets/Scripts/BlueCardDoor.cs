@@ -6,7 +6,8 @@ using UnityEngine;
 public class BlueCardDoor : MonoBehaviour
 {
     [SerializeField] private float _openningOffset;
-    [SerializeField] private float _openenningSpeed;
+    [SerializeField] private float _openenningTime;
+    [SerializeField] private Sprite _blueCardSprite;
 
     private bool _isDoorOpenned = false;
     private float _elapsedTime = 0;
@@ -17,14 +18,14 @@ public class BlueCardDoor : MonoBehaviour
         {
             if (rocketMessage.HaveBlueCard)
                 OpenDoor();
+            else
+                rocketMessage.ShowMessage("NEED BLUE CARD", _blueCardSprite);
         }
     }
 
     private void OpenDoor()
     {
-        transform.DOMoveY(transform.position.y + _openningOffset, _openenningSpeed);
-        gameObject.SetActive(false);
-
+        transform.DOMoveY(transform.position.y + _openningOffset, _openenningTime);
 
         _isDoorOpenned = true;
     }
@@ -35,7 +36,7 @@ public class BlueCardDoor : MonoBehaviour
         {
             _elapsedTime += Time.deltaTime;
 
-            if (_elapsedTime >= _openenningSpeed)
+            if (_elapsedTime >= _openenningTime)
                 gameObject.SetActive(false);
         }
     }
