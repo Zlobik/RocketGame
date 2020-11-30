@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 1113639ede51d5547817731607e2a6c6
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - _rocketMover: {fileID: 4957076665475967515, guid: 9140276d87a35d24cbb8d99bb3c024dd,
+      type: 3}
+  - _rotateSlider: {fileID: 8685302247359425234, guid: af3bd50bd4ef6b747b1965b9a09bbb5c,
+      type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

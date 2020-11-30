@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 876912954066438049}
   - component: {fileID: 876912954066438048}
-  - component: {fileID: 876912954066438051}
   - component: {fileID: 3041078678635351587}
+  - component: {fileID: 876912954066438051}
   m_Layer: 0
   m_Name: Rocket1
   m_TagString: Untagged
@@ -83,6 +83,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!70 &3041078678635351587
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 876912954066438050}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.684}
+  m_Size: {x: 0.78, y: 3}
+  m_Direction: 0
 --- !u!95 &876912954066438051
 Animator:
   serializedVersion: 3
@@ -102,19 +118,3 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!70 &3041078678635351587
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 876912954066438050}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.684}
-  m_Size: {x: 0.78, y: 3}
-  m_Direction: 0

@@ -13,6 +13,7 @@ public class RepairKit : MonoBehaviour
     private Sprite _sprite;
     private bool _isSetRocket = false;
     private bool _isCollected;
+    private BoxCollider2D _boxCollider;
 
     private void Start()
     {
@@ -20,6 +21,7 @@ public class RepairKit : MonoBehaviour
         _sprite = _renderer.sprite;
         _effect = Instantiate(_collectEffect, transform);
         _effect.gameObject.SetActive(false);
+        _boxCollider = GetComponent<BoxCollider2D>();
     }
 
     private void OnDisable()
@@ -30,6 +32,8 @@ public class RepairKit : MonoBehaviour
 
             if (_renderer.sprite == null)
                 _renderer.sprite = _sprite;
+
+            _boxCollider.enabled = true;
         }
     }
 
@@ -38,6 +42,7 @@ public class RepairKit : MonoBehaviour
         if (collision.gameObject.TryGetComponent<Rocket>(out Rocket rocket) && collision.gameObject.TryGetComponent<RocketMessage>(out RocketMessage rocketMessage))
         {
             _isCollected = true;
+            _boxCollider.enabled = false;
 
             GetComponent<SpriteRenderer>().sprite = null;
             rocket.AddHealth(_capacity);

@@ -5,7 +5,7 @@ using UnityEngine.Advertisements;
 
 public class BeforeLevelStartAd : MonoBehaviour
 {
-    private string _gameId = "3900251";
+    private string _gameId = "3919219";
     private bool _testMode = false;
 
     private void Start()

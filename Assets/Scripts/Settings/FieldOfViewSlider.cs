@@ -15,7 +15,7 @@ public class FieldOfViewSlider : MonoBehaviour
         _slider = GetComponent<Slider>();
 
         if (!PlayerPrefs.HasKey(_saveName))
-            PlayerPrefs.SetFloat(_saveName, 1f);
+            PlayerPrefs.SetFloat(_saveName, _slider.value * _cameraSize);
 
         _slider.value = PlayerPrefs.GetFloat(_saveName) / _cameraSize;
     }

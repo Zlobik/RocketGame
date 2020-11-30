@@ -663,7 +663,7 @@ GameObject:
   - component: {fileID: 3155146610318378559}
   - component: {fileID: 1770236066655848256}
   m_Layer: 0
-  m_Name: Mill 1
+  m_Name: BigMill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

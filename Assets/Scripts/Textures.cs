@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Textures : MonoBehaviour
 {
-    [SerializeField] private float _damage = 0.015f;
-    [SerializeField] private float _collisionForceWithoutDamage = 5;
+    private float _collisionForceWithoutDamage = 7.5f;
+    private float _damage = 0.012f;
 
     public float CollisionForceWithoutDamage => _collisionForceWithoutDamage;
 

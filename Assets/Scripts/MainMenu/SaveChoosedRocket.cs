@@ -1,19 +1,25 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class SaveChoosedRocket : MonoBehaviour
 {
-    [SerializeField] private int _number;
+    [SerializeField] private int _rocketId;
+    [SerializeField] private GameObject _nextRocketButton;
 
-    public int Number => _number;
-
-    public void SaveRocket()
+    private void Start ()
     {
-        PlayerPrefs.SetInt("ChoosedRocket", _number);
+        if (PlayerPrefs.HasKey($"Rocket{_rocketId}") && _rocketId < 3 && _nextRocketButton != null)
+        {
+            _nextRocketButton.SetActive(true);
+        }
+    }
 
-        PlayerPrefs.SetInt($"Rocket{_number}", _number);
-
-        Debug.Log("Rocket choosed");
+    public void SaveRocket ()
+    {
+        if (PlayerPrefs.HasKey($"Rocket{_rocketId}"))
+            PlayerPrefs.SetInt("CurrentRocket", _rocketId);
     }
 }

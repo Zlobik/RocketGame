@@ -8,11 +8,12 @@ public class BlueCardDoor : MonoBehaviour
     [SerializeField] private float _openningOffset;
     [SerializeField] private float _openenningTime;
     [SerializeField] private Sprite _blueCardSprite;
+    [SerializeField] private bool _isOpenningGorizontal = false;
 
     private bool _isDoorOpenned = false;
     private float _elapsedTime = 0;
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D (Collider2D collision)
     {
         if (collision.TryGetComponent<RocketMessage>(out RocketMessage rocketMessage))
         {
@@ -23,14 +24,17 @@ public class BlueCardDoor : MonoBehaviour
         }
     }
 
-    private void OpenDoor()
+    private void OpenDoor ()
     {
-        transform.DOMoveY(transform.position.y + _openningOffset, _openenningTime);
+        if (!_isOpenningGorizontal)
+            transform.DOMoveY(transform.localPosition.y + _openningOffset, _openenningTime);
+        else
+            transform.DOMoveX(transform.localPosition.x + _openningOffset, _openenningTime);
 
         _isDoorOpenned = true;
     }
 
-    private void Update()
+    private void Update ()
     {
         if (_isDoorOpenned)
         {

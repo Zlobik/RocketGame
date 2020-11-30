@@ -5,8 +5,8 @@ using UnityEngine.Advertisements;
 
 public class Ads : MonoBehaviour
 {
-    private string _gameId = "3900251";
-    private bool _testMode = true;
+    private string _gameId = "3919219";
+    private bool _testMode = false;
 
     private void Start()
     {
@@ -18,10 +18,9 @@ public class Ads : MonoBehaviour
     {
         var waitForSeconds = new WaitForSeconds(0.5f);
 
-        while (!Advertisement.IsReady("MainBeforeLevelStart"))
+        while (!Advertisement.IsReady("Banner"))
             yield return waitForSeconds;
 
-        Advertisement.Banner.SetPosition(BannerPosition.BOTTOM_CENTER);
-        Advertisement.Banner.Show("MainBeforeLevelStart");
+        Advertisement.Banner.Show("Banner");
     }
 }

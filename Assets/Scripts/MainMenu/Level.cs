@@ -28,8 +28,11 @@ public class Level : MonoBehaviour
 
     private void MakeEnable()
     {
-        for (int i = 0; i < PlayerPrefs.GetInt(_sceneName); i++)
-            _stars[i].gameObject.SetActive(true);
+        if (PlayerPrefs.HasKey(_sceneName))
+        {
+            for (int i = 0; i < PlayerPrefs.GetInt(_sceneName); i++)
+                _stars[i].gameObject.SetActive(true);
+        }
 
         _canvasGroup.interactable = true;
         _canvasGroup.alpha = 1f;

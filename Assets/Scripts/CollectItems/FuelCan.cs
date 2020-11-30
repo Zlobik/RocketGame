@@ -12,11 +12,14 @@ public class FuelCan : MonoBehaviour
     private bool _isCollected;
     private Sprite _sprite;
     private SpriteRenderer _renderer;
+    private BoxCollider2D _boxCollider;
 
     private void Start()
     {
         _renderer = GetComponent<SpriteRenderer>();
+        _boxCollider = GetComponent<BoxCollider2D>();
         _sprite = _renderer.sprite;
+
         _effect = Instantiate(_collectEffect, transform);
         _effect.gameObject.SetActive(false);
     }
@@ -28,6 +31,8 @@ public class FuelCan : MonoBehaviour
             _isCollected = false;
             if (_renderer.sprite == null)
                 _renderer.sprite = _sprite;
+
+            _boxCollider.enabled = true;
         }
     }
 

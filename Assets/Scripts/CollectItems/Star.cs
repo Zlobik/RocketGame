@@ -10,10 +10,12 @@ public class Star : MonoBehaviour
     private Sprite _sprite;
     private bool _isCollected = false;
     private ParticleSystem _effect;
+    private BoxCollider2D _boxCollider;
 
     private void Start()
     {
         _sprite = GetComponent<SpriteRenderer>().sprite;
+        _boxCollider = GetComponent<BoxCollider2D>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -21,6 +23,8 @@ public class Star : MonoBehaviour
         if (collision.GetComponent<Rocket>() && collision.gameObject.TryGetComponent<RocketMessage>(out RocketMessage rocketMessage))
         {
             _isCollected = true;
+            _boxCollider.enabled = false;
+
             gameObject.GetComponent<SpriteRenderer>().sprite = null;
 
             _effect = Instantiate(_collectEffect, transform);

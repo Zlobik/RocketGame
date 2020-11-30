@@ -23,7 +23,6 @@ public class RocketAnimation : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-
         if (collision.gameObject.GetComponent<Textures>() || collision.gameObject.GetComponent<Thorns>() || collision.gameObject.GetComponent<DeathPress>())
         {
             if (collision.relativeVelocity.magnitude > _textures.CollisionForceWithoutDamage && !_timer && !_rocket.IsDead)
@@ -38,7 +37,7 @@ public class RocketAnimation : MonoBehaviour
     {
         if (_timer)
         {
-            _elapsedTime += Time.deltaTime;
+            _elapsedTime += Time.fixedDeltaTime;
 
             if (_elapsedTime >= 0.5f)
             {

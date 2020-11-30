@@ -7,11 +7,13 @@ public class RocketAds : MonoBehaviour
 {
     private Rocket _rocket;
 
-    private string _gameId = "3900251";
+    private string _gameId = "3919219";
     private bool _testMode = false;
+    private int _numberOfDeathBeforeAdServing = 4;
 
     private int _deathCount = 0;
     private bool _isCounted;
+    private int _showedAdCounter = 0;
 
     private void Start()
     {
@@ -37,12 +39,21 @@ public class RocketAds : MonoBehaviour
         {
             if (!_isCounted)
             {
-                _deathCount++; ;
+                _deathCount++;
                 _isCounted = true;
             }
         }
-        if (_deathCount >= 4)
+        if (_deathCount >= _numberOfDeathBeforeAdServing)
+        {
             StartCoroutine(ShowAdVideo());
+            _showedAdCounter++;
+
+            if (_showedAdCounter == 4)
+            {
+                _numberOfDeathBeforeAdServing++;
+                _showedAdCounter = 0;
+            }
+        }
         else if (!_rocket.IsDead && _isCounted)
             _isCounted = false;
     }

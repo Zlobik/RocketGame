@@ -7,19 +7,20 @@ public class DisableGamobjects : MonoBehaviour
     [SerializeField] private GameObject[] _gameObjects;
     [SerializeField] private GameObject _unvisibleDoor;
 
-    private void Start()
+    private void Start ()
     {
 
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D (Collider2D collision)
     {
         if (collision.GetComponent<Rocket>())
         {
             for (int i = 0; i < _gameObjects.Length; i++)
                 _gameObjects[i].SetActive(false);
 
-            _unvisibleDoor.SetActive(true);
+            if (_unvisibleDoor != null)
+                _unvisibleDoor.SetActive(true);
             gameObject.SetActive(false);
         }
     }
